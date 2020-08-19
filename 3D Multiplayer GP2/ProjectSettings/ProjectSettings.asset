@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 20
-  productGUID: 00000000000000000000000000000000
+  productGUID: f67e1c1ebec8e42458ea3fb43cc1afe1
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -747,7 +747,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: a626617d-389d-4d6f-a354-f4429770bf21
   framebufferDepthMemorylessMode: 0
-  projectName: EffectsExamples
+  projectName: 3D Multiplayer GP2
   organizationId: y33tsong
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

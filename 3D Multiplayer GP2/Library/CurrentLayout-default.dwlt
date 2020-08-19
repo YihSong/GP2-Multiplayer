@@ -113,10 +113,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 708, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 709, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 3837
+  controlID: 388
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 3763
+  controlID: 391
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,10 +216,10 @@ MonoBehaviour:
     y: 0
     width: 847
     height: 731
-  m_MinSize: {x: 202, y: 421}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 442}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 3838
+  controlID: 281
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -419,10 +419,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 32}
-      m_SelectedIDs: 
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 444d0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 8e64ffff7673ffff6ccffffffc850000
+      m_ExpandedIDs: 60ddffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -491,28 +491,28 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Tiles to use
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\GP2\GP2-Multiplayer\3D Multiplayer GP2
+  m_LastProjectPath: D:\GP2 Multiplayer Game\GP2-Multiplayer\3D Multiplayer GP2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 139}
-    m_SelectedIDs: 4a590000
-    m_LastClickedID: 22858
-    m_ExpandedIDs: 00000000925700009457000096570000985700009a5700009c5700009e570000a0570000a6570000ba570000bc5700005c580000605800007258000090580000f25800005c67000000ca9a3b
+    scrollPos: {x: 0, y: 11}
+    m_SelectedIDs: ca4d0000
+    m_LastClickedID: 19914
+    m_ExpandedIDs: 000000007a4c00007c4c00007e4c0000804c0000824c0000844c0000864c0000884c00008a4c00008c4c00008e4c0000924c0000944c0000964c0000984c00009a4c0000084d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Self-Scripts
+      m_OriginalName: Self-Scripts
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 19784
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -526,7 +526,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000925700009457000096570000985700009a5700009c5700009e570000a0570000a6570000ba570000bc5700005c580000605800007258000090580000f25800005c67000000ca9a3b
+    m_ExpandedIDs: 000000007a4c00007c4c00007e4c0000804c0000824c0000844c0000864c0000884c00008a4c00008c4c00008e4c0000924c0000944c0000964c0000984c00009a4c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000dc360000e844000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -694,11 +694,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.21044028, y: -0.6209485, z: 0.17810017, w: 0.7337917}
     speed: 2
-    m_Value: {x: 0.21966591, y: -0.5998576, z: 0.17595373, w: 0.74897134}
+    m_Value: {x: -0.21044028, y: 0.6209485, z: -0.17810015, w: -0.7337917}
   m_Size:
     m_Target: 10.340436
     speed: 2
-    m_Value: 8.441173
+    m_Value: 10.340436
   m_Ortho:
     m_Target: 0
     speed: 2
