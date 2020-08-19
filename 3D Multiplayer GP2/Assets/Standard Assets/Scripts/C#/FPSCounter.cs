@@ -10,33 +10,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FPSCounter : MonoBehaviour {
-	float updateInterval = 0.5f;
-	private float accumulatedFrames = 0.0f; // Accumulated frames over the interval
-	private int frames = 0; // Frames drawn over the interval
-	private float timeleft; // Left time for current interval
+	//float updateInterval = 0.5f;
+	//private float accumulatedFrames = 0.0f; // Accumulated frames over the interval
+	//private int frames = 0; // Frames drawn over the interval
+	//private float timeleft; // Left time for current interval
 
-	void Start() {
-		if(!GetComponent<GUIText>()) {
-			print("FPS script needs a GUIText component!");
-			enabled = false;
-			return;
-		}
+	//void Start() {
+	//	if(!GetComponent<GUIText>()) {
+	//		print("FPS script needs a GUIText component!");
+	//		enabled = false;
+	//		return;
+	//	}
 
-		timeleft = updateInterval;
-	}
+	//	timeleft = updateInterval;
+	//}
 
-	void Update() {
-		timeleft -= Time.deltaTime;
-		accumulatedFrames += Time.timeScale / Time.deltaTime;
-		++frames;
+	//void Update() {
+	//	timeleft -= Time.deltaTime;
+	//	accumulatedFrames += Time.timeScale / Time.deltaTime;
+	//	++frames;
 
-		// Interval ended - update GUI text and start new interval
-		if(timeleft <= 0.0) {
-			// Display two fractional digits (f2 format)
-			GetComponent<GUIText>().text = "" + (accumulatedFrames / frames).ToString("f2");
-			timeleft = updateInterval;
-			accumulatedFrames = 0.0f;
-			frames = 0;
-		}
-	}
+	//	// Interval ended - update GUI text and start new interval
+	//	if(timeleft <= 0.0) {
+	//		// Display two fractional digits (f2 format)
+	//		GetComponent<GUIText>().text = "" + (accumulatedFrames / frames).ToString("f2");
+	//		timeleft = updateInterval;
+	//		accumulatedFrames = 0.0f;
+	//		frames = 0;
+	//	}
+	//}
 }

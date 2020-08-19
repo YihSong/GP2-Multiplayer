@@ -15,9 +15,11 @@ public class VillagerLogic : MonoBehaviour {
 	private float gravity = 15;
 	private bool run = false;
 	private Vector3 angle;
-	//private float rotateY;
+    private float rotateY;
+    private float rotateX;
+    public Camera camera1;
 
-	void Start() {
+    void Start() {
 		//	indexAction = 0;
 		//	statusGUI.text = actions[indexAction];
 		villagerController = GetComponent<CharacterController>();
@@ -48,7 +50,8 @@ public class VillagerLogic : MonoBehaviour {
 		//	statusGUI.text = actions[indexAction];
 		//}
 
-		if(villagerController.isGrounded == true) {
+		if(villagerController.isGrounded == true)
+        {
 			if(Input.GetAxis("Vertical") > 0.02 && !Input.GetKey("left ctrl")) {
 				GetComponent<Animation>()["walk-01"].speed = 1;
 				if(run) {
@@ -59,22 +62,68 @@ public class VillagerLogic : MonoBehaviour {
 					GetComponent<Animation>().CrossFade("walk-01");
 					boostIncrement = 1;
 				}
-			} else if(Input.GetAxis("Vertical") < -0.02 && !Input.GetKey("left ctrl")) {
+			}
+            else if(Input.GetAxis("Vertical") < -0.02 && !Input.GetKey("left ctrl")) {
 				GetComponent<Animation>()["walk-01"].speed = -1;
 				GetComponent<Animation>().CrossFade("walk-01");
-			} else {
+			}
+            //if (Input.GetAxis("Horizontal") > 0.02 && !Input.GetKey("left ctrl"))
+            //{
+            //    //    GetComponent<Animation>()["walk-01"].speed = 1;
+            //    //    if (run)
+            //    //    {
+            //    //        GetComponent<Animation>().CrossFade("run-01");
+            //    //        GetComponent<Animation>()["run-01"].speed = 1;
+            //    //        boostIncrement = 3;
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        GetComponent<Animation>().CrossFade("walk-01");
+            //    //        boostIncrement = 1;
+            //    //    }
+            //    //}
+            //    //else if (Input.GetAxis("Horizontal") < -0.02 && !Input.GetKey("left ctrl"))
+            //    //{
+            //    GetComponent<Animation>()["walk-01"].speed = -1;
+            //    GetComponent<Animation>().CrossFade("walk-01");
+            //}
+            //if (Input.GetAxis("Horizontal") < 0.02 && !Input.GetKey("left ctrl"))
+            //{
+            //    //    GetComponent<Animation>()["walk-01"].speed = 1;
+            //    //    if (run)
+            //    //    {
+            //    //        GetComponent<Animation>().CrossFade("run-01");
+            //    //        GetComponent<Animation>()["run-01"].speed = 1;
+            //    //        boostIncrement = 3;
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        GetComponent<Animation>().CrossFade("walk-01");
+            //    //        boostIncrement = 1;
+            //    //    }
+            //    //}
+            //    //else if (Input.GetAxis("Horizontal") < -0.02 && !Input.GetKey("left ctrl"))
+            //    //{
+            //    GetComponent<Animation>()["walk-01"].speed = -1;
+            //    GetComponent<Animation>().CrossFade("walk-01");
+            //}
+
+
+            else {
 				if(Input.GetButton("Attack1") && canAnimate) {
 					DoAttack1();
-				} else if (Input.GetButton("Attack2") && canAnimate) {
+				}
+                else if (Input.GetButton("Attack2") && canAnimate) {
 					DoAttack2();
-				} else {
+				}
+                else {
 					IdleAnimation();
 					boostIncrement = 1;
 				}
 			}
 
 			if(!Input.GetButtonDown("Attack1")) {
-				moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical"));
+				moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 				moveDirection = transform.TransformDirection(moveDirection);
 				moveDirection *= boostIncrement * speed;
 			}
@@ -91,12 +140,14 @@ public class VillagerLogic : MonoBehaviour {
 		//}
 
 		angle = transform.eulerAngles;
-		angle.y += Input.GetAxis("Horizontal") * 5; // Use keyboard to control character turning
+		//angle.y += Input.GetAxis("Horizontal") * 5; // Use keyboard to control character turning
 		transform.eulerAngles = angle;
-		//rotateY = (Input.GetAxis("Mouse X") * 300) * Time.deltaTime; // Use mouse horizontal position to control character turning
-		//villagerController.transform.Rotate(0, rotateY, 0);
-		moveDirection.y -= gravity * Time.deltaTime;
-		villagerController.Move(moveDirection * Time.deltaTime);
+        rotateY = (Input.GetAxis("Mouse X") * 300) * Time.deltaTime; // Use mouse horizontal position to control character turning
+        villagerController.transform.Rotate(0, rotateY, 0);
+        rotateX = (Input.GetAxis("Mouse Y") * -300) * Time.deltaTime; // Use mouse vertical position to control character turning
+        camera1.transform.Rotate(rotateX, 0, 0);
+        moveDirection.y -= gravity * Time.deltaTime;
+        villagerController.Move(moveDirection * Time.deltaTime);
 	}
 
 	void IdleAnimation() {
