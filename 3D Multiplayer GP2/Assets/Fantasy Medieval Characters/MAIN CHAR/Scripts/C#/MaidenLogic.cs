@@ -15,9 +15,14 @@ public class MaidenLogic : MonoBehaviour {
 	private float gravity = 15;
 	private bool run = false;
 	private Vector3 angle;
-	//private var rotateY : float;
+    private float rotateY;
+    private float rotateX;
+    public Camera camera1;
 
-	void Start() {
+    public bool boostCheck;
+    //private var rotateY : float;
+
+    void Start() {
 		//	indexAction = 0;
 		//	statusGUI.text = actions[indexAction];
 		maidenController = GetComponent<CharacterController>();
@@ -31,11 +36,13 @@ public class MaidenLogic : MonoBehaviour {
 
 	void Update() {
 		print(canAnimate);
-		if(Input.GetButtonDown("Boost")) {
+		if(Input.GetButtonDown("Boost2")) {
 			run = true;
-		} else if(Input.GetButtonUp("Boost")) {
+            boostCheck = true;
+		} else if(Input.GetButtonUp("Boost2")) {
 			run = false;
-		}
+            boostCheck = false;
+        }
 
 		if(!Input.GetButtonDown("Attack1")) {
 			canAnimate = true;
@@ -49,7 +56,7 @@ public class MaidenLogic : MonoBehaviour {
 		//	}
 
 		if(maidenController.isGrounded == true) {
-			if(Input.GetAxis("Vertical") > 0.02 && !Input.GetKey("left ctrl")) {
+			if(Input.GetAxis("Vertical2") > 0.02 && !Input.GetKey("left ctrl")) {
 				GetComponent<Animation>()["walk-01"].speed = 1;
 				if(run) {
 					GetComponent<Animation>().CrossFade("run-01");
@@ -59,7 +66,7 @@ public class MaidenLogic : MonoBehaviour {
 					GetComponent<Animation>().CrossFade("walk-01");
 					boostIncrement = 1;
 				}
-			} else if (Input.GetAxis("Vertical") < -0.02 && !Input.GetKey("left ctrl")) {
+			} else if (Input.GetAxis("Vertical2") < -0.02 && !Input.GetKey("left ctrl")) {
 				GetComponent<Animation>()["walk-01"].speed = -1;
 				GetComponent<Animation>().CrossFade("walk-01");
 			} else {
@@ -74,12 +81,12 @@ public class MaidenLogic : MonoBehaviour {
 			}
 
 			if(!Input.GetButtonDown("Attack1")) {
-				moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical"));
+				moveDirection = new Vector3(Input.GetAxis("Horizontal2"), 0, Input.GetAxis("Vertical2"));
 				moveDirection = transform.TransformDirection(moveDirection);
 				moveDirection *= boostIncrement * speed;
 			}
 
-			if(Input.GetButtonDown("Jump")) {
+			if(Input.GetButtonDown("Jump2")) {
 				moveDirection.y = jumpSpeed;
 				GetComponent<Animation>()["jump-01"].speed = 2;
 				GetComponent<Animation>().CrossFade("jump-01");
@@ -91,11 +98,11 @@ public class MaidenLogic : MonoBehaviour {
 		//}
 
 		angle = transform.eulerAngles;
-		angle.y += Input.GetAxis("Horizontal") * 5; // Use keyboard to control character turning
+		//angle.y += Input.GetAxis("Horizontal") * 5; // Use keyboard to control character turning
 		transform.eulerAngles = angle;
-		//rotateY = (Input.GetAxis("Mouse X") * 300) * Time.deltaTime; // Use mouse horizontal position to control character turning
-		//maidenController.transform.Rotate(0, rotateY, 0);
-		moveDirection.y -= gravity * Time.deltaTime;
+        rotateY = (Input.GetAxis("Controller X") * 300) * Time.deltaTime; // Use mouse horizontal position to control character turning
+        maidenController.transform.Rotate(0, rotateY, 0);
+        moveDirection.y -= gravity * Time.deltaTime;
 		maidenController.Move(moveDirection * Time.deltaTime);
 	}
 

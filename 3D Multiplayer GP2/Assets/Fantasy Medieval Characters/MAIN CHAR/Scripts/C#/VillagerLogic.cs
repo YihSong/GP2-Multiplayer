@@ -144,8 +144,8 @@ public class VillagerLogic : MonoBehaviour {
 		transform.eulerAngles = angle;
         rotateY = (Input.GetAxis("Mouse X") * 300) * Time.deltaTime; // Use mouse horizontal position to control character turning
         villagerController.transform.Rotate(0, rotateY, 0);
-        rotateX = (Input.GetAxis("Mouse Y") * -300) * Time.deltaTime; // Use mouse vertical position to control character turning
-        camera1.transform.Rotate(rotateX, 0, 0);
+        //rotateX = (Input.GetAxis("Mouse Y") * -300) * Time.deltaTime; // Use mouse vertical position to control character turning
+        //camera1.transform.Rotate(rotateX, 0, 0);
         moveDirection.y -= gravity * Time.deltaTime;
         villagerController.Move(moveDirection * Time.deltaTime);
 	}
