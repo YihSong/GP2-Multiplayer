@@ -19,6 +19,12 @@ public class VillagerLogic : MonoBehaviour {
     private float rotateX;
     public Camera camera1;
 
+    public AudioSource jumpSound;
+    public bool dead;
+
+    public Vector3 position;
+
+
     void Start() {
 		//	indexAction = 0;
 		//	statusGUI.text = actions[indexAction];
@@ -26,10 +32,14 @@ public class VillagerLogic : MonoBehaviour {
 		GetComponent<Animation>().wrapMode = WrapMode.Loop;
 		GetComponent<Animation>()["jump-01"].wrapMode = WrapMode.Once;
 		GetComponent<Animation>()["attack-02"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Crouching and aiming"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Standing with single fire"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Idle crouching with single fire"].wrapMode = WrapMode.Once;
-	}
+        //	GetComponent.<Animation>()["Crouching and aiming"].wrapMode = WrapMode.Once;
+        //	GetComponent.<Animation>()["Standing with single fire"].wrapMode = WrapMode.Once;
+        //	GetComponent.<Animation>()["Idle crouching with single fire"].wrapMode = WrapMode.Once;
+
+        PlayerPrefs.SetInt("VillagerCheckpointInt", 0);
+
+        position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+    }
 
 	void Update() {
 		print(canAnimate);
@@ -132,6 +142,8 @@ public class VillagerLogic : MonoBehaviour {
 				moveDirection.y = jumpSpeed;
 				GetComponent<Animation>()["jump-01"].speed = 2;
 				GetComponent<Animation>().CrossFade("jump-01");
+
+                jumpSound.Play();
 			}
 		}
 
@@ -148,6 +160,41 @@ public class VillagerLogic : MonoBehaviour {
         //camera1.transform.Rotate(rotateX, 0, 0);
         moveDirection.y -= gravity * Time.deltaTime;
         villagerController.Move(moveDirection * Time.deltaTime);
+
+        if (dead == true)
+        {
+            
+
+            if (PlayerPrefs.GetInt("VillagerCheckpointInt") == 0)
+            {
+                transform.position = position;
+            }
+
+            if (PlayerPrefs.GetInt("VillagerCheckpointInt") == 1)
+            {
+                transform.position = new Vector3(-42.0f, -1.1f, 17.2f);
+            }
+            if (PlayerPrefs.GetInt("VillagerCheckpointInt") == 2)
+            {
+                transform.position = new Vector3(-114.4f, 19.3f, 18.7f);
+            }
+            if (PlayerPrefs.GetInt("VillagerCheckpointInt") == 3)
+            {
+                transform.position = new Vector3(-75.6f, 26.2f, 23.9f);
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
 	}
 
 	void IdleAnimation() {
@@ -165,4 +212,20 @@ public class VillagerLogic : MonoBehaviour {
 		GetComponent<Animation>().CrossFade("attack-06");
 		canAnimate = false;
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "KillPlane")
+        {
+            dead = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "KillPlane")
+        {
+            dead = false;
+        }
+    }
 }

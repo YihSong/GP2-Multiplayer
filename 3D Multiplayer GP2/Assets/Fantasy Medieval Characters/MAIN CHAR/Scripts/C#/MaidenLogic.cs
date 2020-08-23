@@ -19,7 +19,13 @@ public class MaidenLogic : MonoBehaviour {
     private float rotateX;
     public Camera camera1;
 
+    public AudioSource jumpSound;
+
     public bool boostCheck;
+
+    public bool dead;
+
+    public Vector3 position;
     //private var rotateY : float;
 
     void Start() {
@@ -29,10 +35,12 @@ public class MaidenLogic : MonoBehaviour {
 		GetComponent<Animation>().wrapMode = WrapMode.Loop;
 		GetComponent<Animation>()["jump-01"].wrapMode = WrapMode.Once;
 		GetComponent<Animation>()["attack-02"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Crouching and aiming"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Standing with single fire"].wrapMode = WrapMode.Once;
-		//	GetComponent.<Animation>()["Idle crouching with single fire"].wrapMode = WrapMode.Once;
-	}
+        //	GetComponent.<Animation>()["Crouching and aiming"].wrapMode = WrapMode.Once;
+        //	GetComponent.<Animation>()["Standing with single fire"].wrapMode = WrapMode.Once;
+        //	GetComponent.<Animation>()["Idle crouching with single fire"].wrapMode = WrapMode.Once;
+        position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        PlayerPrefs.SetInt("MaidenCheckpointInt", 0);
+    }
 
 	void Update() {
 		print(canAnimate);
@@ -90,6 +98,8 @@ public class MaidenLogic : MonoBehaviour {
 				moveDirection.y = jumpSpeed;
 				GetComponent<Animation>()["jump-01"].speed = 2;
 				GetComponent<Animation>().CrossFade("jump-01");
+
+                jumpSound.Play();
 			}
 		}
 
@@ -104,7 +114,31 @@ public class MaidenLogic : MonoBehaviour {
         maidenController.transform.Rotate(0, rotateY, 0);
         moveDirection.y -= gravity * Time.deltaTime;
 		maidenController.Move(moveDirection * Time.deltaTime);
-	}
+
+        if (dead == true)
+        {
+
+
+            if (PlayerPrefs.GetInt("MaidenCheckpointInt") == 0)
+            {
+                transform.position = position;
+            }
+
+            if (PlayerPrefs.GetInt("MaidenCheckpointInt") == 1)
+            {
+                transform.position = new Vector3(-60.25f, -3.13f, -14.67f);
+            }
+            if (PlayerPrefs.GetInt("MaidenCheckpointInt") == 2)
+            {
+                transform.position = new Vector3(-63.7f, 14.2f, -39.5f);
+            }
+            if (PlayerPrefs.GetInt("MaidenCheckpointInt") == 3)
+            {
+                transform.position = new Vector3(-81.7f, 27.2f, 1.84f);
+
+            }
+        }
+    }
 
 	void IdleAnimation() {
 		GetComponent<Animation>().CrossFade("idle-03");
@@ -121,4 +155,20 @@ public class MaidenLogic : MonoBehaviour {
 		GetComponent<Animation>().CrossFade("attack-06");
 		canAnimate = false;
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "KillPlane")
+        {
+            dead = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "KillPlane")
+        {
+            dead = false;
+        }
+    }
 }
