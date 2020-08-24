@@ -5,6 +5,8 @@ using UnityEngine;
 public class Flamethrower : MonoBehaviour
 {
     public GameObject flameThrower;
+    public int waitToFire;
+    public int waitToStop;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +30,10 @@ public class Flamethrower : MonoBehaviour
 
     public IEnumerator FlamethrowerCo()
     {
-        yield return new WaitForSeconds(5);
-        Destroy(Instantiate(flameThrower, transform.position, transform.rotation), 3);
+        flameThrower.SetActive(false);
+        yield return new WaitForSeconds(waitToFire);
+        flameThrower.SetActive(true);
+        Destroy(Instantiate(flameThrower, flameThrower.transform.position, flameThrower.transform.rotation), waitToStop);
         StartCoroutine("FlamethrowerCo");
 
 
