@@ -44,4 +44,12 @@ public class MovingPlatform2 : MonoBehaviour
             Debug.Log("Lift 2 Rises");
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player2")
+        {
+            playerInMovingPlatform = false;
+            Debug.Log("Lift 2 Falls");
+        }
+    }
 }

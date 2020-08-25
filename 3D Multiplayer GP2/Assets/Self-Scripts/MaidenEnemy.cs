@@ -11,7 +11,7 @@ public class MaidenEnemy : MonoBehaviour
     private Transform currentTarget;
 
     private float proximity = 0.0001f; // Difference in distance before moving to next target.
-    private float speed = 1; // Speed to move to target.
+    private float speed = 0.8f; // Speed to move to target.
 
     public MaidenLogic maiden;
     public Vector3 position;

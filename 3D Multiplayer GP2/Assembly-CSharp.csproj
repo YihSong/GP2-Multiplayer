@@ -62,20 +62,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CreditsToMenu.cs" />
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Fantasy Medieval Characters\MAIN CHAR\Scripts\C#\HeroineAnimation.cs" />
     <Compile Include="Assets\Fantasy Medieval Characters\MAIN CHAR\Scripts\C#\MageLogic.cs" />
     <Compile Include="Assets\Fantasy Medieval Characters\MAIN CHAR\Scripts\C#\MaidenLogic.cs" />
     <Compile Include="Assets\Fantasy Medieval Characters\MAIN CHAR\Scripts\C#\VillagerLogic.cs" />
     <Compile Include="Assets\Fantasy Medieval Characters\MAIN CHAR\Scripts\C#\WarriorLogic.cs" />
-    <Compile Include="Assets\GameOver.cs" />
     <Compile Include="Assets\HandTorch\Scripts\RotateObject.cs" />
     <Compile Include="Assets\HandTorch\Scripts\ToggleLight.cs" />
+    <Compile Include="Assets\Self-Scripts\CreditsToMenu.cs" />
     <Compile Include="Assets\Self-Scripts\FPMaidenCameraController.cs" />
     <Compile Include="Assets\Self-Scripts\FPVillagerCameraController.cs" />
     <Compile Include="Assets\Self-Scripts\Fire.cs" />
     <Compile Include="Assets\Self-Scripts\Flamethrower.cs" />
+    <Compile Include="Assets\Self-Scripts\GameOver.cs" />
     <Compile Include="Assets\Self-Scripts\KillPlane.cs" />
     <Compile Include="Assets\Self-Scripts\MaidenCheckpoint1.cs" />
     <Compile Include="Assets\Self-Scripts\MaidenCheckpoint2.cs" />
@@ -86,7 +86,9 @@
     <Compile Include="Assets\Self-Scripts\MaidenEnemy.cs" />
     <Compile Include="Assets\Self-Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\Self-Scripts\MovingPlatform2.cs" />
+    <Compile Include="Assets\Self-Scripts\PauseManager.cs" />
     <Compile Include="Assets\Self-Scripts\TimeCounter.cs" />
+    <Compile Include="Assets\Self-Scripts\TitleScreen.cs" />
     <Compile Include="Assets\Self-Scripts\VillagerCheckpoint1.cs" />
     <Compile Include="Assets\Self-Scripts\VillagerCheckpoint2.cs" />
     <Compile Include="Assets\Self-Scripts\VillagerCheckpoint3.cs" />
@@ -94,15 +96,14 @@
     <Compile Include="Assets\Self-Scripts\VillagerDoor2.cs" />
     <Compile Include="Assets\Self-Scripts\VillagerDoor3.cs" />
     <Compile Include="Assets\Self-Scripts\VillagerEnemy.cs" />
+    <Compile Include="Assets\Self-Scripts\WinPlatform.cs" />
     <Compile Include="Assets\Shared\Ramps\Runtime\RampAsset.cs" />
     <Compile Include="Assets\Shared\Scripts\AdjustTimeScale.cs" />
     <Compile Include="Assets\Shared\Scripts\ProximityActivate.cs" />
     <Compile Include="Assets\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Shared\Scripts\SimpleCharacterMotor.cs" />
-    <Compile Include="Assets\TitleScreen.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Undead Characters\Ghoul\Scripts\C#\CameraRoot.cs" />
-    <Compile Include="Assets\WinPlatform.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
